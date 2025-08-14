@@ -1,0 +1,215 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+@media (max-width: 640px) {
+  .mobile-card {
+    border-left: 4px solid #4299e1;
+    transition: all 0.2s ease;
+  }
+  .mobile-card:hover {
+    transform: translateX(4px);
+  }
+}
+
+/* Footer social links */
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  color: #2563eb; /* Tailwind blue-600 */
+  margin: 0 0.5rem;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+.footer-link:hover {
+  color: #fff;
+  background: #2563eb;
+  text-decoration: underline;
+}
+
+/* Header */
+header {
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Logo */
+header .bg-blue-600 {
+  background: #2563eb !important;
+}
+
+/* Títulos */
+h1,
+h2 {
+  font-weight: bold;
+  color: #1e293b;
+}
+
+/* Formulários */
+input[type="text"],
+input[type="email"],
+select {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #2563eb33;
+}
+
+/* Botão principal */
+button[type="submit"] {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+button[type="submit"]:hover {
+  background: #1d4ed8;
+  transform: scale(1.02);
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+}
+th {
+  background: #f9fafb;
+  color: #6b7280;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+tr {
+  transition: background 0.2s;
+}
+tr:hover {
+  background: #f3f4f6;
+}
+
+/* Mobile cards */
+.mobile-card {
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: box-shadow 0.2s;
+}
+.mobile-card:hover {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 0.08);
+}
+
+/* Status badge */
+.bg-green-100 {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+}
+.bg-red-100 {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+}
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f2a5e 0%, #1d4ed8 100%);
+        }
+        .feature-card {
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        .btn-primary, .btn-secondary {
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+            font-weight: 600;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        .btn-secondary {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .rounded-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        footer a {
+            transition: color 0.2s ease;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+        .footer-links h4 {
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #3b82f6;
+        }
+/* Toast Notification */
+#toast-notification {
+    transition: opacity 0.3s ease-in-out;
+}
+#toast-notification.hidden {
+    opacity: 0;
+    pointer-events: none;
+}

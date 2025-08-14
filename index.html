@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Clientes</title>
+    <link rel="icon" href="assets/icons/icon-16px.ico" sizes="16x16" type="image/x-icon">
+    <link rel="icon" href="assets/icons/icon-32px.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="assets/icons/icon-64px.ico" sizes="64x64" type="image/x-icon">
+    <link rel="icon" href="assets/icons/icon-128px.ico" sizes="128x128" type="image/x-icon">
+    <link rel="icon" href="assets/icons/icon-256px.ico" sizes="256x256" type="image/x-icon">
+    <link rel="icon" href="assets/icons/icon-500px.ico" sizes="500x500" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center justify-center w-12 h-12 rounded-lg">
+                    <a href="index.html">
+                        <img src="assets/img/logo.png" alt="Logo" class="w-full h-full object-cover">
+                    </a>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-gray-800">Cadastro de Empresas</h1>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Início</a>
+                <a href="clientes.html" class="text-gray-700 hover:text-blue-600 font-medium">Clientes</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <div class="hero-gradient py-20 md:py-28">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Soluções Inteligentes para Gestão de
+                        Clientes</h1>
+                    <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Plataforma empresarial completa para
+                        centralizar, gerenciar e analisar relacionamentos com seus clientes ativos.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-6">
+                        <a href="clientes.html"
+                            class="bg-white text-blue-700 hover:bg-gray-100 font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 flex items-center justify-center gap-3">
+                            <i class="fas fa-users text-xl"></i>
+                            <span>Acessar Gestão de Clientes</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="container mx-auto px-4 py-16">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Recursos Empresariais</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ferramentas avançadas para otimizar sua gestão de
+                    relacionamento com clientes</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-8 shadow-lg text-center">
+                    <div class="rounded-icon bg-blue-50 mx-auto mb-6">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Analytics Avançado</h3>
+                    <p class="text-gray-600 mb-4">Relatórios detalhados com insights sobre comportamento e tendências
+                        dos clientes.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
+                        Saiba mais
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card bg-white p-8 shadow-lg text-center">
+                    <div class="rounded-icon bg-green-50 mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Segurança Empresarial</h3>
+                    <p class="text-gray-600 mb-4">Proteção de dados em conformidade com regulamentações e melhores
+                        práticas do setor.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
+                        Saiba mais
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card bg-white p-8 shadow-lg text-center">
+                    <div class="rounded-icon bg-purple-50 mx-auto mb-6">
+                        <i class="fas fa-sync-alt text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Integrações</h3>
+                    <p class="text-gray-600 mb-4">Conecte com suas ferramentas existentes para uma experiência
+                        unificada.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
+                        Saiba mais
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class=" py-4">
+            <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+                <em>Desenvolvido por Mateus Alves - 2025</em>
+                <br>
+                <a href="https://github.com/AllvesMatteus" target="_blank" class="footer-link">
+                    <i class="fab fa-github mr-1"></i> GitHub
+                </a>
+                |
+                <a href="https://www.linkedin.com/in/allves-matteus/" target="_blank" class="footer-link">
+                    <i class="fab fa-linkedin mr-1"></i> LinkedIn
+                </a>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+Informações do Projeto
+
+Banco de Dados (Supabase)
+-------------------------
+URL do Projeto Supabase:
+https://lmmjgjueorbpehrspslm.supabase.co
+
+URL do Site hospedado:
+https://supabase.com/
+
+Senha do Banco de Dados:
+>vYS.FP1
+
+Observações:
+- A URL acima é usada para conectar o frontend ao Supabase.
+- A senha do banco é utilizada para acesso administrativo ao banco de dados (não coloque no frontend).
+- Para integração no frontend, utilize a SUPABASE_URL e a SUPABASE_KEY (anon/public key) no arquivo assets/js/main.js.
