@@ -7,8 +7,33 @@ const customerTableBody = document.getElementById('customerTableBody');
 const mobileCustomerList = document.getElementById('mobileCustomerList');
 const searchInput = document.getElementById('searchInput');
 const noResults = document.getElementById('noResults');
+const phoneInput = document.getElementById('phone');
 
 let allCustomers = [];
+let editingCustomerId = null;
+
+phoneInput.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 16) {
+        value = value.slice(0, 16);
+    }
+
+    let formatted = '';
+    if (value.length > 0) {
+        formatted = '(' + value.substring(0, 2);
+    }
+    if (value.length > 2) {
+        formatted += ') ' + value.substring(2, 3);
+    }
+    if (value.length > 3) {
+        formatted += ' ' + value.substring(3, 7);
+    }
+    if (value.length > 7) {
+        formatted += '-' + value.substring(7, 16);
+    }
+
+    e.target.value = formatted;
+});
 
 async function loadCustomers(searchTerm = "") {
     let query = supabaseClient
@@ -66,6 +91,9 @@ function renderCustomers(customers, searchTerm = "") {
                 </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <button onclick="editCustomer(${c.id})" class="text-blue-600 hover:text-blue-900 transition mr-2">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
                 <button onclick="deleteCustomer(${c.id})" class="text-red-600 hover:text-red-900 transition">
                     <i class="fas fa-trash-alt"></i>
                 </button>
@@ -89,6 +117,9 @@ function renderCustomers(customers, searchTerm = "") {
                 </span>
             </div>
             <div class="mt-3 flex justify-end">
+                <button onclick="editCustomer(${c.id})" class="text-blue-600 hover:text-blue-900 transition px-3 py-1 rounded-md text-sm font-medium">
+                    <i class="fas fa-pencil-alt mr-1"></i> Editar
+                </button>
                 <button onclick="deleteCustomer(${c.id})" class="text-red-600 hover:text-red-900 transition px-3 py-1 rounded-md text-sm font-medium">
                     <i class="fas fa-trash-alt mr-1"></i> Excluir
                 </button>
@@ -101,11 +132,10 @@ function renderCustomers(customers, searchTerm = "") {
 function showToast(message, type = 'success') {
     const toastNotification = document.getElementById('toast-notification');
     const toastMessage = document.getElementById('toast-message');
-    const toastIcon = toastNotification.querySelector('svg'); // Assuming the SVG is the icon
+    const toastIcon = toastNotification.querySelector('svg');
 
     toastMessage.textContent = message;
 
-    // Reset classes
     toastNotification.classList.remove('bg-green-100', 'bg-red-100', 'text-green-500', 'text-red-500');
     toastIcon.classList.remove('text-green-500', 'text-red-500');
     toastNotification.querySelector('div:first-child').classList.remove('bg-green-100', 'bg-red-100');
@@ -113,12 +143,10 @@ function showToast(message, type = 'success') {
     if (type === 'success') {
         toastNotification.querySelector('div:first-child').classList.add('bg-green-100');
         toastIcon.classList.add('text-green-500');
-        // Change SVG path for success icon (checkmark)
         toastIcon.innerHTML = '<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>';
     } else if (type === 'error') {
         toastNotification.querySelector('div:first-child').classList.add('bg-red-100');
         toastIcon.classList.add('text-red-500');
-        // Change SVG path for error icon (X mark)
         toastIcon.innerHTML = '<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>';
     }
 
@@ -126,32 +154,96 @@ function showToast(message, type = 'success') {
 
     setTimeout(() => {
         toastNotification.classList.add('hidden');
-    }, 3000); // Hide after 3 seconds
+    }, 3000);
 }
 
-// Event listener for closing toast manually
 document.querySelector('#toast-notification button[data-dismiss-target="#toast-notification"]').addEventListener('click', () => {
     document.getElementById('toast-notification').classList.add('hidden');
 });
 
-async function addCustomer(event) {
+async function saveCustomer(event) {
     event.preventDefault();
     const nome = document.getElementById('name').value;
-    const telefone = document.getElementById('phone').value;
+    const telefone = document.getElementById('phone').value.replace(/\D/g, '');
     const email = document.getElementById('email').value;
     const status = document.getElementById('status').value;
 
-    const { error } = await supabaseClient
-        .from('clientes')
-        .insert([{ nome, telefone, email, status }]);
+    if (editingCustomerId) {
+        const { data, error } = await supabaseClient
+            .from('clientes')
+            .select('id')
+            .or(`nome.eq.${nome},email.eq.${email},telefone.eq.${telefone}`)
+            .not('id', 'eq', editingCustomerId);
 
-    if (error) {
-        showToast('Erro ao cadastrar cliente!', 'error');
-        console.error(error);
+        if (error) {
+            showToast('Erro ao verificar duplicados!', 'error');
+            console.error(error);
+            return;
+        }
+
+        if (data.length > 0) {
+            showToast('Cliente com mesmo nome, e-mail ou telefone já existe!', 'error');
+            return;
+        }
+
+        const { updateError } = await supabaseClient
+            .from('clientes')
+            .update({ nome, telefone, email, status })
+            .eq('id', editingCustomerId);
+
+        if (updateError) {
+            showToast('Erro ao atualizar cliente!', 'error');
+            console.error(updateError);
+        } else {
+            customerForm.reset();
+            loadCustomers();
+            showToast('Cliente atualizado com sucesso!', 'success');
+            editingCustomerId = null;
+            document.getElementById('formSubmitButton').innerHTML = '<i class="fas fa-user-plus mr-2"></i> Adicionar Cliente';
+        }
     } else {
-        customerForm.reset();
-        loadCustomers();
-        showToast('Cliente cadastrado com sucesso!', 'success');
+        const { data, error } = await supabaseClient
+            .from('clientes')
+            .select('id')
+            .or(`nome.eq.${nome},email.eq.${email},telefone.eq.${telefone}`);
+
+        if (error) {
+            showToast('Erro ao verificar duplicados!', 'error');
+            console.error(error);
+            return;
+        }
+
+        if (data.length > 0) {
+            showToast('Cliente com mesmo nome, e-mail ou telefone já existe!', 'error');
+            return;
+        }
+
+        const { error: insertError } = await supabaseClient
+            .from('clientes')
+            .insert([{ nome, telefone, email, status }]);
+
+        if (insertError) {
+            showToast('Erro ao cadastrar cliente!', 'error');
+            console.error(insertError);
+        } else {
+            customerForm.reset();
+            loadCustomers();
+            showToast('Cliente cadastrado com sucesso!', 'success');
+        }
+    }
+}
+
+function editCustomer(id) {
+    const customer = allCustomers.find(c => c.id === id);
+    if (customer) {
+        document.getElementById('name').value = customer.nome;
+        document.getElementById('phone').value = customer.telefone;
+        document.getElementById('email').value = customer.email;
+        document.getElementById('status').value = customer.status;
+
+        editingCustomerId = id;
+        document.getElementById('formSubmitButton').innerHTML = '<i class="fas fa-save mr-2"></i> Atualizar Cliente';
+        window.scrollTo(0, 0);
     }
 }
 
@@ -176,7 +268,7 @@ searchInput.addEventListener('input', function () {
     renderCustomers(allCustomers, searchTerm);
 });
 
-customerForm.addEventListener('submit', addCustomer);
+customerForm.addEventListener('submit', saveCustomer);
 loadCustomers();
 
 document.getElementById('mobileMenuButton').addEventListener('click', function () {

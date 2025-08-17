@@ -45,20 +45,23 @@
     <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <div class="flex items-center justify-center w-12 h-12 rounded-lg">
-                    <a href="index.html">
+            <a href="index.html">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg">
+
                         <img src="assets/img/logo.png" alt="Logo" class="w-full h-full object-cover">
-                    </a>
+
+                    </div>
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">Gestão de Clientes</h1>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-xl md:text-2xl font-bold text-gray-800">Cadastro de Empresas</h1>
-                </div>
-            </div>
+            </a>
             <nav class="hidden md:flex items-center space-x-6">
                 <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Início</a>
                 <a href="#tableContainer" class="text-gray-700 hover:text-blue-600 font-medium">Clientes</a>
-                <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contato</a>
+                <a href="https://github.com/AllvesMatteus" target="_blank"
+                    class="text-gray-700 hover:text-blue-600 font-medium">GitHub</a>
             </nav>
         </div>
     </header>
@@ -66,20 +69,20 @@
     <!-- Mobile menu button -->
     <div class="md:hidden fixed bottom-6 right-6 z-10">
         <button id="mobileMenuButton"
-            class="p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition">
+            class="p-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition">
             <i class="fas fa-bars"></i>
         </button>
     </div>
 
     <!-- Mobile menu content -->
     <div id="mobileMenu"
-        class="hidden md:hidden fixed inset-0 bg-white z-20 flex flex-col items-center justify-center space-y-8 text-xl">
+        class="hidden md:hidden fixed inset-0 z-20 flex flex-col items-center justify-center space-y-8 text-xl">
         <button id="closeMobileMenuButton" class="absolute top-4 right-4 text-gray-600 hover:text-gray-800 text-3xl">
             <i class="fas fa-times"></i>
         </button>
         <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Início</a>
         <a href="#tableContainer" class="text-gray-700 hover:text-blue-600 font-medium">Clientes</a>
-        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contato</a>
+        <a href="https://github.com/AllvesMatteus" class="text-gray-700 hover:text-blue-600 font-medium">GitHub</a>
     </div>
 
     <!-- Main Content -->
@@ -96,7 +99,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
-                        <input type="tel" id="phone" required maxlength="11" pattern="[0-9]*"
+                        <input type="tel" id="phone" required maxlength="16"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                     </div>
 
@@ -116,7 +119,7 @@
                     </select>
                 </div>
 
-                <button type="submit"
+                <button type="submit" id="formSubmitButton"
                     class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium transition duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                     <i class="fas fa-user-plus mr-2"></i> Adicionar Cliente
                 </button>
@@ -137,7 +140,6 @@
                 </div>
             </div>
 
-            <!-- Desktop Table -->
             <div class="hidden md:block overflow-x-auto" id="tableContainer">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -174,6 +176,48 @@
             </div>
         </div>
     </main>
+
+    <!-- Alert -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-exclamation-circle text-yellow-400 text-2xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="text-lg font-bold text-yellow-800 mb-2">AVISO IMPORTANTE - PROJETO FICTÍCIO</h3>
+                        <p class="text-yellow-700 mb-3">
+                            Este projeto é inteiramente fictício e foi desenvolvido exclusivamente para fins de
+                            treinamento
+                            nas tecnologias <strong>TypeScript</strong> e <strong>MySQL</strong>.
+                            Qualquer dado apresentado não representa informações reais de empresas ou clientes.
+                        </p>
+                        <p class="text-yellow-700 mb-3">
+                            Todos os dados cadastrados no sistema devem ser <strong>fictícios</strong>.
+                            <strong>Não insira informações pessoais ou sensíveis</strong>, pois o banco de dados é
+                            <strong>público e aberto</strong>, sendo utilizado apenas para demonstração e estudos.
+                        </p>
+                        <p class="text-yellow-700 mb-3">
+                            Caso o sistema apresente instabilidades ou indisponibilidade, isso pode ocorrer devido
+                            ao uso da
+                            versão gratuita do <strong>Supabase</strong>, que possui limitações de recursos e
+                            uptime.
+                        </p>
+                        <div class="mt-4">
+                            <p class="text-yellow-700 font-medium">
+                                Código-fonte disponível no:
+                                <a href="https://github.com/AllvesMatteus/ClientManagementSystem" target="_blank"
+                                    class="text-blue-600 hover:text-blue-800 no-underline">
+                                    GitHub - ClientManagementSystem
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class=" py-4">

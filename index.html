@@ -20,20 +20,23 @@
     <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <div class="flex items-center justify-center w-12 h-12 rounded-lg">
-                    <a href="index.html">
+            <a href="index.html">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg">
+
                         <img src="assets/img/logo.png" alt="Logo" class="w-full h-full object-cover">
-                    </a>
+
+                    </div>
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">Gestão de Clientes</h1>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-xl md:text-2xl font-bold text-gray-800">Cadastro de Empresas</h1>
-                </div>
-            </div>
+            </a>
             <div class="hidden md:flex items-center space-x-6">
                 <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Início</a>
                 <a href="clientes.html" class="text-gray-700 hover:text-blue-600 font-medium">Clientes</a>
-                <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contato</a>
+                <a href="https://github.com/AllvesMatteus" target="_blank"
+                    class="text-gray-700 hover:text-blue-600 font-medium">GitHub</a>
             </div>
         </div>
     </header>
@@ -58,52 +61,112 @@
             </div>
         </div>
 
-        <!-- Features Section -->
+        <!-- Features -->
         <div class="container mx-auto px-4 py-16">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Recursos Empresariais</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Ferramentas avançadas para otimizar sua gestão de
-                    relacionamento com clientes</p>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Ferramentas avançadas para otimizar sua gestão de relacionamento com clientes
+                </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="feature-card bg-white p-8 shadow-lg text-center">
-                    <div class="rounded-icon bg-blue-50 mx-auto mb-6">
-                        <i class="fas fa-chart-line text-blue-600 text-2xl"></i>
+
+                <div class="feature-card bg-white p-8 shadow-lg text-center min-w-0 relative overflow-visible">
+                    <div class="icon-container mx-auto mb-6 relative">
+                        <img src="assets/img/clientes.png" alt="Gestão de Clientes"
+                            class="h-24 w-24 mx-auto -mt-12 drop-shadow-lg">
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Analytics Avançado</h3>
-                    <p class="text-gray-600 mb-4">Relatórios detalhados com insights sobre comportamento e tendências
-                        dos clientes.</p>
-                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Gestão Eficiente de Clientes</h3>
+                    <p class="text-gray-600 mb-4 break-words">
+                        Cadastre, edite e remova usuários com facilidade em uma interface simples e organizada.
+                    </p>
+                    <a href="clientes.html"
+                        class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
                         Saiba mais
                         <i class="fas fa-arrow-right ml-2 text-sm"></i>
                     </a>
                 </div>
 
-                <div class="feature-card bg-white p-8 shadow-lg text-center">
-                    <div class="rounded-icon bg-green-50 mx-auto mb-6">
-                        <i class="fas fa-shield-alt text-green-600 text-2xl"></i>
+                <div class="feature-card bg-white p-8 shadow-lg text-center min-w-0 relative overflow-visible">
+                    <div class="icon-container mx-auto mb-6 relative">
+                        <img src="assets/img/responsivo.png" alt="Interface Responsiva"
+                            class="h-24 w-24 mx-auto -mt-12 drop-shadow-lg">
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Segurança Empresarial</h3>
-                    <p class="text-gray-600 mb-4">Proteção de dados em conformidade com regulamentações e melhores
-                        práticas do setor.</p>
-                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Interface Responsiva</h3>
+                    <p class="text-gray-600 mb-4 break-words">
+                        Layout otimizado para desktop, tablet e celular, garantindo acessibilidade em qualquer
+                        dispositivo.
+                    </p>
+                    <a href="clientes.html"
+                        class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
                         Saiba mais
                         <i class="fas fa-arrow-right ml-2 text-sm"></i>
                     </a>
                 </div>
 
-                <div class="feature-card bg-white p-8 shadow-lg text-center">
-                    <div class="rounded-icon bg-purple-50 mx-auto mb-6">
-                        <i class="fas fa-sync-alt text-purple-600 text-2xl"></i>
+                <div class="feature-card bg-white p-8 shadow-lg text-center min-w-0 relative overflow-visible">
+                    <div class="icon-container mx-auto mb-6 relative">
+                        <img src="assets/img/seguranca.png" alt="Armazenamento Seguro"
+                            class="h-24 w-24 mx-auto -mt-12 drop-shadow-lg">
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Integrações</h3>
-                    <p class="text-gray-600 mb-4">Conecte com suas ferramentas existentes para uma experiência
-                        unificada.</p>
-                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Armazenamento Seguro de Dados</h3>
+                    <p class="text-gray-600 mb-4 break-words">
+                        Integração com
+                        <a href="https://supabase.com/" class="text-blue-600 font-medium hover:text-blue-800"
+                            target="_blank">
+                            Supabase
+                        </a> para manter seus dados protegidos e acessíveis de forma confiável.
+                    </p>
+                    <a href="clientes.html"
+                        class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">
                         Saiba mais
                         <i class="fas fa-arrow-right ml-2 text-sm"></i>
                     </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Alert -->
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-circle text-yellow-400 text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-yellow-800 mb-2">AVISO IMPORTANTE - PROJETO FICTÍCIO</h3>
+                            <p class="text-yellow-700 mb-3">
+                                Este projeto é inteiramente fictício e foi desenvolvido exclusivamente para fins de
+                                treinamento
+                                nas tecnologias <strong>TypeScript</strong> e <strong>MySQL</strong>.
+                                Qualquer dado apresentado não representa informações reais de empresas ou clientes.
+                            </p>
+                            <p class="text-yellow-700 mb-3">
+                                Todos os dados cadastrados no sistema devem ser <strong>fictícios</strong>.
+                                <strong>Não insira informações pessoais ou sensíveis</strong>, pois o banco de dados é
+                                <strong>público e aberto</strong>, sendo utilizado apenas para demonstração e estudos.
+                            </p>
+                            <p class="text-yellow-700 mb-3">
+                                Caso o sistema apresente instabilidades ou indisponibilidade, isso pode ocorrer devido
+                                ao uso da
+                                versão gratuita do <strong>Supabase</strong>, que possui limitações de recursos e
+                                uptime.
+                            </p>
+                            <div class="mt-4">
+                                <p class="text-yellow-700 font-medium">
+                                    Código-fonte disponível no:
+                                    <a href="https://github.com/AllvesMatteus/ClientManagementSystem" target="_blank"
+                                        class="text-blue-600 hover:text-blue-800 no-underline">
+                                        GitHub - ClientManagementSystem
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
