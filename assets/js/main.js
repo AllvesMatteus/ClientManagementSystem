@@ -8,6 +8,7 @@ const mobileCustomerList = document.getElementById('mobileCustomerList');
 const searchInput = document.getElementById('searchInput');
 const noResults = document.getElementById('noResults');
 const phoneInput = document.getElementById('phone');
+const exportButton = document.getElementById('exportButton');
 
 let allCustomers = [];
 let editingCustomerId = null;
@@ -263,12 +264,98 @@ async function deleteCustomer(id) {
     }
 }
 
+function exportToJson() {
+    if (allCustomers.length === 0) {
+        showToast('Não há clientes para exportar.', 'error');
+        return;
+    }
+
+    const dataStr = JSON.stringify(allCustomers, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', url);
+    linkElement.setAttribute('download', 'clientes.json');
+    document.body.appendChild(linkElement);
+    linkElement.click();
+    document.body.removeChild(linkElement);
+}
+
+function exportToCsv() {
+    if (allCustomers.length === 0) {
+        showToast('Não há clientes para exportar.', 'error');
+        return;
+    }
+
+    const headers = 'ID,Nome,Telefone,Email,Status';
+    const csvContent = allCustomers.map(c =>
+        [c.id, c.nome, c.telefone, c.email, c.status].join(',')
+    ).join('\n');
+
+    const fullCsv = `${headers}\n${csvContent}`;
+
+    const blob = new Blob([fullCsv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', url);
+    linkElement.setAttribute('download', 'clientes.csv');
+    document.body.appendChild(linkElement);
+    linkElement.click();
+    document.body.removeChild(linkElement);
+}
+
+function exportToXml() {
+    if (allCustomers.length === 0) {
+        showToast('Não há clientes para exportar.', 'error');
+        return;
+    }
+
+    let xmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n<clientes>\n';
+
+    allCustomers.forEach(c => {
+        xmlContent += '  <cliente>\n';
+        xmlContent += `    <id>${c.id}</id>\n`;
+        xmlContent += `    <nome>${c.nome}</nome>\n`;
+        xmlContent += `    <telefone>${c.telefone || ''}</telefone>\n`;
+        xmlContent += `    <email>${c.email || ''}</email>\n`;
+        xmlContent += `    <status>${c.status}</status>\n`;
+        xmlContent += '  </cliente>\n';
+    });
+
+    xmlContent += '</clientes>';
+
+    const blob = new Blob([xmlContent], { type: 'application/xml;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', url);
+    linkElement.setAttribute('download', 'clientes.xml');
+    document.body.appendChild(linkElement);
+    linkElement.click();
+    document.body.removeChild(linkElement);
+}
+
 searchInput.addEventListener('input', function () {
     const searchTerm = this.value.trim();
     renderCustomers(allCustomers, searchTerm);
 });
 
 customerForm.addEventListener('submit', saveCustomer);
+
+exportButton.addEventListener('change', function () {
+    const format = this.value;
+    if (format === 'json') {
+        exportToJson();
+    } else if (format === 'csv') {
+        exportToCsv();
+    } else if (format === 'xml') {
+        exportToXml();
+    }
+    this.value = "";
+});
+
 loadCustomers();
 
 document.getElementById('mobileMenuButton').addEventListener('click', function () {
