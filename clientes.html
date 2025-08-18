@@ -140,12 +140,15 @@
                             class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                     </div>
                     <div class="relative">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <i class="fas fa-file-export text-white"></i>
+                        </div>
                         <select id="exportButton"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 pl-4 pr-8 rounded-md appearance-none transition duration-200 cursor-pointer">
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 pl-10 pr-8 rounded-md appearance-none transition duration-200 cursor-pointer">
                             <option value="" disabled selected>Exportar</option>
-                            <option value="json">JSON</option>
-                            <option value="csv">CSV</option>
-                            <option value="xml">XML</option>
+                            <option value="json" class="text-black">JSON</option>
+                            <option value="csv" class="text-black">CSV</option>
+                            <option value="xml" class="text-black">XML</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

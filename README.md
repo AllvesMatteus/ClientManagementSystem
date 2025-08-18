@@ -11,6 +11,11 @@ Sistema web simples para cadastro, consulta e gerenciamento de clientes, desenvo
 - **Exclusão de Clientes:** Remova clientes do sistema com uma etapa de confirmação.
 - **Integração com Supabase:** Todos os dados são armazenados e gerenciados de forma segura em um banco de dados real.
 
+## Exportação de Dados
+
+- **Múltiplos Formatos:** Exporte a lista completa de clientes para os formatos JSON, CSV e XML.
+- **Interface Intuitiva:** Selecione o formato de exportação desejado através de um botão estilizado com ícone.
+
 ## Recursos Adicionais
 
 - **Validação de Duplicados:** O sistema impede o cadastro de clientes com o mesmo nome, e-mail ou telefone.
